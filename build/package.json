@@ -1,0 +1,10 @@
+{
+  "name": "bitmachine-fixture-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "bitmachine's fixture service, built from source: a page computed with one npm dependency",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "ms": "2.1.3"
+  }
+}
