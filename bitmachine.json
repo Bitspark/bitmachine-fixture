@@ -1,0 +1,28 @@
+{
+  "format": 1,
+  "deploy": {
+    "web": {
+      "runs": {
+        "published": {
+          "kind": "docker-image",
+          "with": {
+            "ref": "busybox@sha256:66a6306db78bf2dbf3487f293aa8d6990d8e506fdffab9cc43fe422becf886e4"
+          }
+        }
+      },
+      "with": {
+        "command": ["sh", "-c", "mkdir -p /tmp/site; echo 'bitmachine fixture' > /tmp/site/index.html; exec httpd -f -v -p 8080 -h /tmp/site"],
+        "user": "65534:65534",
+        "tmpfs": ["/tmp"],
+        "cpu": 250,
+        "memory": 67108864
+      },
+      "provides": {
+        "http": {
+          "port": 8080,
+          "protocol": "http"
+        }
+      }
+    }
+  }
+}
