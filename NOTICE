@@ -2,3 +2,7 @@ bitmachine-fixture
 Copyright 2026 Bitspark and contributors
 
 This product includes software developed at Bitspark (https://github.com/Bitspark).
+
+build/npm-cache/ contains the npm package ms 2.1.3 (https://github.com/vercel/ms),
+unmodified as the npm registry publishes it, licensed under the MIT License;
+its license text is inside the package.

@@ -15,7 +15,13 @@ It holds only what bitmachine's first milestone exercises:
   (one dependency, `ms`), and runs it as `web`. Its page carries a value
   computed by that dependency, so serving it shows the package set was the
   one installed; its log ticks once a second. The build runs with no network:
-  the base image and every tarball reach it from bitmachine's own server.
+  the base image reaches it from bitmachine's own server, and the package set
+  is vendored in the tree.
+- `build/npm-cache/`, that package set as npm's content cache: each tarball
+  the lockfile pins, at `_cacache/content-v2/sha512/<hex[0:2]>/<hex[2:4]>/<hex[4:]>`,
+  where hex is the lockfile's `integrity` in hexadecimal. The Dockerfile mounts
+  it from the build context and installs with `npm ci --offline`, so the
+  uploaded `build/` tree is the build's whole source.
 
 **Pinned use.** bitmachine's tests resolve `refs/heads/main` and assert the
 commit they get against one pinned in bitmachine's own repository. A change
